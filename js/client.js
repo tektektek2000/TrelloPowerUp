@@ -8,9 +8,10 @@ TrelloPowerUp.initialize({
   // Start adding handlers for your capabilities here!
   "card-badges": function (t, opts) {
     let cardAttachments = opts.attachments; // Trello passes you the attachments on the card
+    console.log(t);
     return t
-      .card("all")
-      .get("all")
+      .card("attachments")
+      .get("attachments")
       .then(function (card) {
         console.log("We just loaded the card name for fun: " + card);
         return [
