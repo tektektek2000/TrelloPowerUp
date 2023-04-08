@@ -6,9 +6,6 @@
   "scripts": {
     "start": "node server.js"
   },
-  "dependencies": {
-    "express": "^4.15.2"
-  },
   "engines": {
     "node": "6.10.x"
   },
@@ -23,7 +20,6 @@
   },
   "homepage": "https://github.com/tektektek2000/TrelloPowerUp#readme",
   "keywords": [
-    "node",
-    "express"
+    "node"
   ]
 }
