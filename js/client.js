@@ -10,8 +10,7 @@ TrelloPowerUp.initialize({
     let cardAttachments = opts.attachments; // Trello passes you the attachments on the card
     console.log(cardAttachments);
     return t
-      .card("attachments")
-      .get("attachments")
+      .card("all")
       .then(function (card) {
         console.log(card);
         return [
