@@ -25,6 +25,7 @@ TrelloPowerUp.initialize({
       });
   },
   'board-buttons': function (t, opts) {
+    console.log("It kind of works");
     return [{
       // we can either provide a button that has a callback function
       text: 'New Meeting',
@@ -34,8 +35,8 @@ TrelloPowerUp.initialize({
             url: tc.signUrl('./views/new-meeting.html'),
             fullscreen: false
         });
-    },
-      condition: 'edit'
+        },
+        condition: 'edit'
     }];
   }
 });
