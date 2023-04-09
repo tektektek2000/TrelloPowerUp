@@ -13,7 +13,7 @@ TrelloPowerUp.initialize({
       .card("attachments")
       .get("attachments")
       .then(function (card) {
-        console.log("We just loaded the card name for fun: " + card);
+        console.log(card);
         return [
           {
             // It's best to use static badges unless you need your
