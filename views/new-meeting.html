@@ -23,15 +23,25 @@
         datetimepicker in container with
         relative position -->
     <div class="container" style="margin:100px">
-        <div style="position: relative">
- 
+        <form class="row g-3" id="meetingForm">
+            <div class="col-md-12">
+                <label for="meetingName" class="form-label">Meeting name</label>
+                <input type="text" class="form-control" id="meetingName" placeholder="Type meeting name" required/>
+            </div>
+            <div class="col-md-12">
             <label for="meetingstart">Meeting start:</label>
             <input class="form-control"
-                type="text" id="meetingstart" placeholder="Select date and time"/>
+                type="text" id="meetingstart" placeholder="Select date and time"  required/>
+            </div>
+            <div class="col-md-12">
             <label for="meetingstart">Meeting end:</label>
             <input class="form-control"
-                type="text" id="meetingend" placeholder="Select time"/>
-        </div>
+                type="text" id="meetingend" placeholder="Select time"  required/>
+            </div>
+            <div class="col-12">
+                <button class="btn btn-primary" type="submit" id="createmeeting">Create meeting</button>
+                </div>
+        </form>
     </div>
 </body>
  

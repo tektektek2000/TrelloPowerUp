@@ -25,6 +25,7 @@ TrelloPowerUp.initialize({
         return [{
             // we can either provide a button that has a callback function
             text: 'New Meeting',
+            condition: "edit",
             callback: (tc) => {
                 return tc.modal({
                     title: 'New Meeting',
