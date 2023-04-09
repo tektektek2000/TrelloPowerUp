@@ -1,3 +1,5 @@
+var Promise = TrelloPowerUp.Promise;
+
 $(document).ready(function(){
     $('#meetingstart').datetimepicker({
         format: 'YYYY-MM-DD hh:mm a'
