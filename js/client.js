@@ -27,10 +27,6 @@ TrelloPowerUp.initialize({
   'board-buttons': function (t, opts) {
     return [{
       // we can either provide a button that has a callback function
-      icon: {
-        dark: WHITE_ICON,
-        light: BLACK_ICON
-      },
       text: 'New Meeting',
       callback: (tc) => {
         return tc.modal({
