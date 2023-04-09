@@ -6,7 +6,9 @@ $(document).ready(function(){
         format: 'hh:mm a'
     });
     $('#meetingForm').submit(function(event){
+        console.log(window.TrelloPowerUp);
         var t = window.TrelloPowerUp.iframe();
+        console.log(t);
         t.closeModal();
         event.preventDefault();
     })
