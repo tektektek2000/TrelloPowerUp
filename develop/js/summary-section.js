@@ -15,7 +15,7 @@ $(document).ready(function(){
     });
     $("#meetingstart")[0].value = `23:00`
     console.log(t.getContext());
-    t.get(t.getContext().card.id, 'shared', 'meetingCard')
+    t.get('card', 'shared', 'meetingCard')
     .then(cardRole => {
         if (cardRole && cardRole.role === "Summary") {
             console.log(cardRole);
