@@ -29,13 +29,18 @@ TrelloPowerUp.initialize({
                     if(cardRole && cardRole.role === "Summary"){
                         return [
                             {
-                                text: "Summary",
+                                text: "Summary :)",
                                 color: "green"
                             },
                         ];
                     }
                     else{
-                        return [];
+                        return [
+                            {
+                                text: "Not summary :(",
+                                color: "green"
+                            },
+                        ];
                     }
                 });
             });
