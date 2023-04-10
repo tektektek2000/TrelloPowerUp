@@ -28,11 +28,13 @@ $(document).ready(function(){
                     console.log(
                     `Response: ${response.status} ${response.statusText}`
                     );
-                    t.closeModal();
-                    event.preventDefault();
                     return response.text();
                 })
-                .then(text => console.log(text))
+                .then(text => {
+                    console.log(text);
+                    t.closeModal();
+                    event.preventDefault();   
+                })
                 .catch(err => console.error(err));
             }
         });
