@@ -75,7 +75,7 @@ TrelloPowerUp.initialize({
             })
     },
     'card-back-section': function (t, options) {
-        console.log(window.location.href);
+        //console.log(window.location.href);
         return t
             .card("all")
             .then(function (card) {
