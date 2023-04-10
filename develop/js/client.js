@@ -75,13 +75,13 @@ TrelloPowerUp.initialize({
             })
     },
     'card-back-section': function (t, options) {
+        console.log(window.location.href);
         return t
             .card("all")
             .then(function (card) {
                 return t.get(card.id, 'shared', 'meetingCard')
                     .then(cardRole => {
                         if (cardRole && cardRole.role === "Summary") {
-                            console.log(window.location.href);
                             //const url = window.location.href.match(/(*)\/views/i)
                             return {
                                 title: 'Summary Card',
