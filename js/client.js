@@ -39,7 +39,7 @@ TrelloPowerUp.initialize({
                         return [
                             {
                                 text: `🕒 ${ToTwoDigit(cardRole.startHour)}:${ToTwoDigit(cardRole.startMinutes)}-${ToTwoDigit(cardRole.endHour)}:${ToTwoDigit(cardRole.endMinutes)}`,
-                                color: "light-gray"
+                                color: "blue"
                             },
                             {
                                 text: `Length: ${durationHours} h ${durationMinutes} m`,
