@@ -46,6 +46,15 @@ $(document).ready(function(){
                         return response.text();
                     })
                     .then(text => {
+                        const id = text.match(/"id":"([\da-z]*)"/i)[1];
+                        t.set(id, 'shared', 'meetingCard', {
+                            role: "Summary",
+                            startDate: `${match[1]}/${match[2]}/${match[3]}`,
+                            startHour: starthour,
+                            startMinutes: parseInt(match[5]),
+                            endHour: endhour,
+                            endMinutes: parseInt(match[8])
+                        });
                         t.closeModal();
                     })
                     .catch(err => {

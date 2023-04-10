@@ -24,13 +24,16 @@ TrelloPowerUp.initialize({
         return t
             .card("all")
             .then(function (card) {
-                console.log(card);
-                return [
-                    {
-                        text: "Static",
-                        color: "green"
-                    },
-                ];
+                let cardRole = t.get(card.id, 'shared', 'meetingCard');
+                if(cardRole && cardRole.role === "summary"){
+                    return [
+                        {
+                            text: "Summary",
+                            color: "grey"
+                        },
+                    ];
+                }
+                return [];
             });
     },
     'board-buttons': function (t, opts) {
