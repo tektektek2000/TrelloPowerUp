@@ -9,7 +9,12 @@ on:
   pull_request:
 
 permissions:
-  contents: read, write
+  contents: write
+  deployments: write
+  packages: write
+  pages: read|write|none
+  repository-projects: write
+  statuses: read|write|none
   # Needed for the 'trilom/file-changes-action' action
   pull-requests: read
 
