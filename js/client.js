@@ -36,6 +36,7 @@ TrelloPowerUp.initialize({
                     }
                     return;
                 });
+                return ret;
             });
     },
     'board-buttons': function (t, opts) {
