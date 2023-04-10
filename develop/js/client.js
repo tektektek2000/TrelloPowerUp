@@ -88,7 +88,7 @@ TrelloPowerUp.initialize({
                                 icon: "https://tektektek2000.github.io/TrelloPowerUp/develop/icons/summary.png", //I just wanna dieeeeeee
                                 content: {
                                     type: 'iframe',
-                                    url: t.signUrl('views/summary-section.html'),
+                                    url: t.signUrl(TrelloPowerUp.util.relativeUrl('./views/summary-section.html')),
                                     height: 500, // Max height is 1500.
                                 },
                                 action: {
