@@ -55,9 +55,15 @@ $(document).ready(function(){
                             startMinutes: parseInt(match[5]),
                             endHour: endhour,
                             endMinutes: parseInt(match[8])
-                        }).then(idk => {
+                        })
+                        .then(idk => {
+                            t.closeModal();
+                        })
+                        .catch(err => {
+                            console.error(err)
                             t.closeModal();
                         });
+                    })
                     })
                     .catch(err => {
                         console.error(err)
