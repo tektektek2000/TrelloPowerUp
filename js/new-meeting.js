@@ -13,13 +13,6 @@ $(document).ready(function(){
             appName: 'Test'
         });
         var context = t.getContext();
-        var newList = {
-            name: 'Test',
-            desc: 'This is the description of our new card.',
-            // Place this card at the top of our list
-            idList: myList,
-            pos: 'top'
-        };
         t.getRestApi()
         .getToken()
         .then(function(token) {
