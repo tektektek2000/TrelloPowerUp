@@ -10,30 +10,6 @@ var authenticationFailure = function() {
     console.log('Failed authentication');
 };
 
-window.Trello.authorize({
-    type: 'popup',
-    name: 'Getting Started Application',
-    scope: {
-        read: 'true',
-        write: 'true' },
-    expiration: 'never',
-    success: authenticationSuccess,
-    error: authenticationFailure
-});
-
-var myList = 'test';
-
-var creationSuccess = function (data) {
-  console.log('Card created successfully.');
-  console.log(JSON.stringify(data, null, 2));
-};
-
-var newList = {
-  name: 'Test',
-};
-
-window.Trello.post('/lists/', newList, creationSuccess);
-
 TrelloPowerUp.initialize({
     // Start adding handlers for your capabilities here!
     "card-badges": function (t, opts) {
@@ -52,18 +28,33 @@ TrelloPowerUp.initialize({
             });
     },
     'board-buttons': function (t, opts) {
-        return [{
-            // we can either provide a button that has a callback function
-            text: 'New Meeting',
-            condition: "edit",
-            callback: (tc) => {
-                return tc.modal({
-                    title: 'New Meeting',
-                    url: tc.signUrl('./views/new-meeting.html'),
-                    fullscreen: false
-                });
-            },
-            condition: 'edit'
-        }];
+        return t.getRestApi()
+    	// We now have an instance of the API client.
+        .isAuthorized()
+        .then(function(isAuthorized) {
+            if (isAuthorized) {
+                return [{
+                // we can either provide a button that has a callback function
+                text: 'New Meeting',
+                condition: "edit",
+                callback: (tc) => {
+                    return tc.modal({
+                        title: 'New Meeting',
+                        url: tc.signUrl('./views/new-meeting.html'),
+                        fullscreen: false
+                    });
+                },
+                condition: 'edit'
+            }];
+        } else {
+            return [{
+            text: 'Authorize Test',
+            //callback: showIframe
+            }];
+        }
+        })
     }
+},{
+    appKey: '2905a45608f989a24bf26e3d92edcf80',
+    appName: 'Test'
 });
