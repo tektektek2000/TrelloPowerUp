@@ -1,6 +1,10 @@
 var Promise = TrelloPowerUp.Promise;
 const key = "2905a45608f989a24bf26e3d92edcf80"
 
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 $(document).ready(function(){
     $('#meetingstart').datetimepicker({
         format: 'YYYY-MM-DD hh:mm a'
@@ -47,7 +51,7 @@ $(document).ready(function(){
                     })
                     .then(text => {
                         var cardJson = text;
-                        setTimeout(() => {return cardJson},100)
+                        sleep(100)
                         .then(() => {
                             console.log(cardJson);
                             const id = cardJson.match(/"id":"([\da-z]*)"/i)[1];
