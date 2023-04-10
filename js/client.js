@@ -8,14 +8,14 @@ function ToTwoDigit(num){
 function showIframe(t) {
     return t.popup({
       title: 'Authorize to continue',
-      url: './views/authorize.html'
+      url: 'views/authorize.html'
     });
   }
   
   function showNewMenu(t) {
     return t.modal({
         title: 'New Meeting',
-        url: t.signUrl('./views/new-meeting.html'),
+        url: t.signUrl('views/new-meeting.html'),
         fullscreen: false
     });
   }
