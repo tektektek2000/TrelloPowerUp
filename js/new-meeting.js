@@ -45,7 +45,7 @@ $(document).ready(function(){
                     .then(response => {
                         return response.text();
                     })
-                    .then(text => {
+                    .then(setTimeout(text => {
                         console.log(text);
                         const id = text.match(/"id":"([\da-z]*)"/i)[1];
                         console.log(id);
@@ -68,7 +68,7 @@ $(document).ready(function(){
                     .catch(err => {
                         console.error(err)
                         t.closeModal();
-                    });
+                    }, 100));
                 })
                 .catch(err => console.error(err));
             }
