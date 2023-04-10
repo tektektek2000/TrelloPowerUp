@@ -32,20 +32,13 @@ $(document).ready(function(){
                 console.log("No token")
             }
             else{
-                fetch(`https://api.trello.com/1/lists?name=${listName}&idBoard=${context.board}&key=${key}&token=${token}`, {
-                    method: 'POST'
-                })
+                api.addList(listName, context.board, key, token)
                 .then(response => {
                     return response.text();
                 })
                 .then(text => {
                     const id = text.match(/"id":"([\da-z]*)"/i)[1]
-                    fetch(`https://api.trello.com/1/cards?idList=${id}&name=Summary&desc=<Summary>&key=${key}&token=${token}`, {
-                    method: 'POST',
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                    })
+                    api.addCard("Summary","This is an automatically generated card.",id,key,token)
                     .then(response => {
                         return response.text();
                     })
