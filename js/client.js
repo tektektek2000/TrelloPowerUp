@@ -25,10 +25,16 @@ TrelloPowerUp.initialize({
                 return t.get(card.id, 'shared', 'meetingCard')
                 .then( cardRole => {
                     if(cardRole && cardRole.role === "Summary"){
+                        var durationHours = cardRole.startHour < cardRole.endHour ? cardRole.endHour - cardRole.startHour : 24 - cardRole.startHour + cardRole.endHour;
+                        var durationMinutes = cardRole.endMinutes - cardRole.startMinutes;
+                        if(durationMinutes < 0){
+                            durationHours--;
+                            durationMinutes += 60;
+                        }
                         console.log(cardRole);
                         return [
                             {
-                                text: "Summary",
+                                text: `Length: ${durationHours}:${durationMinutes}`,
                                 color: "green"
                             },
                         ];
