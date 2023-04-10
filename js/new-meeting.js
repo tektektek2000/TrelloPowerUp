@@ -12,6 +12,17 @@ $(document).ready(function(){
             appKey: '2905a45608f989a24bf26e3d92edcf80',
             appName: 'Test'
         });
+        var context = t.getContext();
+        var api = t.getRestApi();
+        api.getToken()
+        .then(function(token){
+            if(!token){
+                console.log("No token");
+            }
+            else{
+                console.log(api);
+            }
+        });
         t.closeModal();
         event.preventDefault();
     })
