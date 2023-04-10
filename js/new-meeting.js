@@ -39,7 +39,7 @@ $(document).ready(function(){
                 })
                 .then(text => {
                     console.log(text);
-                    const id = text.match(/"id":"([\da-z])*"/i)[1]
+                    const id = text.match(/"id":"([\da-z]*)"/i)[1]
                     console.log(id);
                     fetch(`https://api.trello.com/1/cards?idList=${id}&name=Summary&desc=<Summary>&key=${key}&token=${token}`, {
                     method: 'POST',
