@@ -1,4 +1,6 @@
 /* global TrelloPowerUp */
+import * as api from "api.js"
+
 var Promise = TrelloPowerUp.Promise;
 
 function ToTwoDigit(num){
