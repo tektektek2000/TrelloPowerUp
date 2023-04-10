@@ -1,6 +1,10 @@
 /* global TrelloPowerUp */
 var Promise = TrelloPowerUp.Promise;
 
+function ToTwoDigit(num){
+    return num < 10 ? "0" : "" + num;
+}
+
 function showIframe(t) {
     return t.popup({
       title: 'Authorize to continue',
@@ -34,7 +38,7 @@ TrelloPowerUp.initialize({
                         console.log(cardRole);
                         return [
                             {
-                                text: `🕒 ${cardRole.startHour}:${cardRole.startMinutes}-${cardRole.endHour}:${cardRole.endMinutes}`,
+                                text: `🕒 ${ToTwoDigit(cardRole.startHour)}:${ToTwoDigit(cardRole.startMinutes)}-${ToTwoDigit(cardRole.endHour)}:${ToTwoDigit(cardRole.endMinutes)}`,
                                 color: "green"
                             },
                             {
