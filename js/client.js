@@ -9,7 +9,7 @@ function showIframe(t) {
   }
   
   function showNewMenu(t) {
-    return tc.modal({
+    return t.modal({
         title: 'New Meeting',
         url: tc.signUrl('./views/new-meeting.html'),
         fullscreen: false
