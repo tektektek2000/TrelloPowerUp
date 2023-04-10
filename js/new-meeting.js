@@ -9,10 +9,10 @@ function sleep(ms) {
 
 $(document).ready(function(){
     $('#meetingstart').datetimepicker({
-        format: 'YYYY-MM-DD hh:mm a'
+        format: 'YYYY-MM-DD HH:mm'
     });
     $('#meetingend').datetimepicker({
-        format: 'hh:mm a'
+        format: 'HH:mm'
     });
     $('#meetingForm').submit(function(event){
         var t = window.TrelloPowerUp.iframe({
@@ -22,10 +22,10 @@ $(document).ready(function(){
         event.preventDefault();   
         var context = t.getContext();
         var listName =  $("#meetingstart")[0].value  + "-" + $("#meetingend")[0].value ;
-        const regex = /(\d\d\d\d)-(\d\d)-(\d\d) (\d\d):(\d\d) ([ap]m)-(\d\d):(\d\d) ([ap]m)/i;
+        const regex = /(\d\d\d\d)-(\d\d)-(\d\d) (\d\d):(\d\d)-(\d\d):(\d\d)/i;
         const match = listName.match(regex);
-        var starthour = match[4] === "12" ? (match[6] === "am" ? 0 : 12) : (match[6] === "am" ? parseInt(match[4]) : parseInt(match[4]) + 12);
-        var endhour = match[7] === "12" ? (match[9] === "am" ? 0 : 12) : (match[9] === "am" ? parseInt(match[7]) : parseInt(match[7]) + 12);
+        var starthour = parseInt(match[4]);
+        var endhour = parseInt(match[6]);
         listName = $("#meetingName")[0].value + " " + `${match[1]}/${match[2]}/${match[3]}`;
         t.getRestApi()
         .getToken()
@@ -57,7 +57,7 @@ $(document).ready(function(){
                                 startHour: starthour,
                                 startMinutes: parseInt(match[5]),
                                 endHour: endhour,
-                                endMinutes: parseInt(match[8])
+                                endMinutes: parseInt(match[7])
                             })
                             .then(idk => {
                                 t.closeModal();

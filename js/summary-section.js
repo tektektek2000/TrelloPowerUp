@@ -1,7 +1,3 @@
-function ToTwoDigit(num) {
-    return num < 10 ? `0${num}` : num;
-}
-
 $(document).ready(function(){  
     var t = window.TrelloPowerUp.iframe({
         appKey: '2905a45608f989a24bf26e3d92edcf80',
