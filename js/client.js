@@ -2,7 +2,7 @@
 var Promise = TrelloPowerUp.Promise;
 
 function ToTwoDigit(num){
-    return num < 10 ? "0" : "" + num.toString();
+    return num < 10 ? `0${num}` : num;
 }
 
 function showIframe(t) {
