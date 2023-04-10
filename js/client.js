@@ -21,6 +21,23 @@ window.Trello.authorize({
     error: authenticationFailure
 });
 
+var myList = 'test';
+
+var creationSuccess = function (data) {
+  console.log('Card created successfully.');
+  console.log(JSON.stringify(data, null, 2));
+};
+
+var newCard = {
+  name: 'New Test Card',
+  desc: 'This is the description of our new card.',
+  // Place this card at the top of our list
+  idList: myList,
+  pos: 'top'
+};
+
+window.Trello.post('/cards/', newCard, creationSuccess);
+
 TrelloPowerUp.initialize({
     // Start adding handlers for your capabilities here!
     "card-badges": function (t, opts) {
