@@ -13,6 +13,7 @@ $(document).ready(function(){
             appName: 'Test'
         });
         var context = t.getContext();
+        var listName = "test";
         t.getRestApi()
         .getToken()
         .then(function(token) {
@@ -20,7 +21,17 @@ $(document).ready(function(){
                 console.log("No token")
             }
             else{
-                console.log(token);
+                fetch(`https://api.trello.com/1/lists?name=${listName}&idBoard=${context.board}&key=2905a45608f989a24bf26e3d92edcf80&token=${apptoken}`, {
+                method: 'POST'
+                })
+                .then(response => {
+                    console.log(
+                    `Response: ${response.status} ${response.statusText}`
+                    );
+                    return response.text();
+                })
+                .then(text => console.log(text))
+                .catch(err => console.error(err));
             }
             t.closeModal();
             event.preventDefault();
