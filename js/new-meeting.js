@@ -51,7 +51,7 @@ $(document).ready(function(){
                     })
                     .then(text => {
                         var cardJson = text;
-                        sleep(100)
+                        sleep(200) //The Api is slow and i need to wait otherwise i get no card with this id error.
                         .then(() => {
                             console.log(cardJson);
                             const id = cardJson.match(/"id":"([\da-z]*)"/i)[1];

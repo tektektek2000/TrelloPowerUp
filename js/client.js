@@ -25,6 +25,8 @@ TrelloPowerUp.initialize({
                 t.get(card.id, 'shared', 'meetingCard')
                 .then( cardRole => {
                     console.log(cardRole);
+                    console.log(cardRole.role);
+                    console.log(cardRole && cardRole.role === "Summary");
                     if(cardRole && cardRole.role === "Summary"){
                         return [
                             {
