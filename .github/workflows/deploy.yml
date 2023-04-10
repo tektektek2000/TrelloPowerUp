@@ -28,9 +28,12 @@ jobs:
         uses: actions/checkout@v3
         with:
             ref: deploy
+            token: ${{ secrets.DeployKey }}
       - name: Run Script
         shell: bash
         run: |
+          git config --global user.name 'Norbert László'
+          git config --global user.email 'laszlo.norbi2000@gmail.com'
           rm -r develop;
           rm -r main;
           git clone --branch main https://github.com/tektektek2000/TrelloPowerUp.git main
