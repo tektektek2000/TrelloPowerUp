@@ -75,7 +75,7 @@ TrelloPowerUp.initialize({
             })
     },
     'card-back-section': function (t, options) {
-        //console.log(window.location.href);
+        console.log(TrelloPowerUp.util.relativeUrl('/views/summary-section.html'));
         return t
             .card("all")
             .then(function (card) {
@@ -91,7 +91,7 @@ TrelloPowerUp.initialize({
                                 },
                                 content: {
                                     type: 'iframe',
-                                    url: t.signUrl('views/summary-section.html'),
+                                    url: t.signUrl(TrelloPowerUp.util.relativeUrl('/views/summary-section.html')),
                                     height: 500, // Max height is 1500.
                                 },
                                 action: {
