@@ -85,10 +85,7 @@ TrelloPowerUp.initialize({
                             //const url = window.location.href.match(/(*)\/views/i)
                             return {
                                 title: 'Summary Card',
-                                icon: {
-                                    light: "https://tektektek2000.github.io/TrelloPowerUp/develop/icons/summary.jpg",
-                                    dark: "https://tektektek2000.github.io/TrelloPowerUp/develop/icons/summary.jpg"
-                                },
+                                icon: options.icon,
                                 content: {
                                     type: 'iframe',
                                     url: t.signUrl(TrelloPowerUp.util.relativeUrl('/views/summary-section.html')),
