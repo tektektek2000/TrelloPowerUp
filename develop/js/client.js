@@ -81,11 +81,11 @@ TrelloPowerUp.initialize({
                 return t.get(card.id, 'shared', 'meetingCard')
                     .then(cardRole => {
                         if (cardRole && cardRole.role === "Summary") {
-                            console.log(window.location.href + "/icons/summary.jpg");
+                            console.log(window.location.href);
                             //const url = window.location.href.match(/(*)\/views/i)
                             return {
                                 title: 'Summary Card',
-                                icon: window.location.href + "/icons/summary.jpg", // Must be a gray icon, colored icons not allowed.
+                                icon: "https://tektektek2000.github.io/TrelloPowerUp/develop/icons/summary.jpg", // Hard coding
                                 content: {
                                     type: 'iframe',
                                     url: t.signUrl('../views/summary-section.html'),
