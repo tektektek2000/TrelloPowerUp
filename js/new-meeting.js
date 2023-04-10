@@ -14,15 +14,9 @@ $(document).ready(function(){
         });
         var context = t.getContext();
         var api = t.getRestApi();
-        api.getToken()
-        .then(function(token){
-            if(!token){
-                console.log("No token");
-            }
-            else{
-                console.log(api);
-            }
-        });
+        
+        console.log(api);
+        console.log(context);
         t.closeModal();
         event.preventDefault();
     })
