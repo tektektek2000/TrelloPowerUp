@@ -81,16 +81,11 @@ TrelloPowerUp.initialize({
                 return t.get(card.id, 'shared', 'meetingCard')
                     .then(cardRole => {
                         if (cardRole && cardRole.role === "Summary") {
-                            var durationHours = cardRole.startHour < cardRole.endHour ? cardRole.endHour - cardRole.startHour : 24 - cardRole.startHour + cardRole.endHour;
-                            var durationMinutes = cardRole.endMinutes - cardRole.startMinutes;
-                            if (durationMinutes < 0) {
-                                durationHours--;
-                                durationMinutes += 60;
-                            }
-                            console.log(window.location.origin + "/icons/summary.jpg");
+                            console.log(window.location.href + "/icons/summary.jpg");
+                            //const url = window.location.href.match(/(*)\/views/i)
                             return {
                                 title: 'Summary Card',
-                                icon: window.location.origin + "/icons/summary.jpg", // Must be a gray icon, colored icons not allowed.
+                                icon: window.location.href + "/icons/summary.jpg", // Must be a gray icon, colored icons not allowed.
                                 content: {
                                     type: 'iframe',
                                     url: t.signUrl('../views/summary-section.html'),
