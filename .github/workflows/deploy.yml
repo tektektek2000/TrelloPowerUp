@@ -36,7 +36,6 @@ jobs:
           git clone --branch develop https://github.com/tektektek2000/TrelloPowerUp.git develop
           rm -r main/.git
           rm -r develop/.git
-          rm -r .github
           rm -r main/.github
           rm -r develop/.github
           git add --all
