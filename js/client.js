@@ -1,14 +1,20 @@
 /* global TrelloPowerUp */
-
 var Promise = TrelloPowerUp.Promise;
 
-var authenticationSuccess = function() {
-    console.log('Successful authentication');
-};
-
-var authenticationFailure = function() {
-    console.log('Failed authentication');
-};
+function showIframe(t) {
+    return t.popup({
+      title: 'Authorize to continue',
+      url: './views/authorize.html'
+    });
+  }
+  
+  function showNewMenu(t) {
+    return tc.modal({
+        title: 'New Meeting',
+        url: tc.signUrl('./views/new-meeting.html'),
+        fullscreen: false
+    });
+  }
 
 TrelloPowerUp.initialize({
     // Start adding handlers for your capabilities here!
@@ -37,19 +43,13 @@ TrelloPowerUp.initialize({
                 // we can either provide a button that has a callback function
                 text: 'New Meeting',
                 condition: "edit",
-                callback: (tc) => {
-                    return tc.modal({
-                        title: 'New Meeting',
-                        url: tc.signUrl('./views/new-meeting.html'),
-                        fullscreen: false
-                    });
-                },
-                condition: 'edit'
+                callback: showNewMenu
             }];
         } else {
             return [{
-            text: 'Authorize Test',
-            //callback: showIframe
+                text: 'New Meeting',
+                condition: "edit",
+                callback: showIframe
             }];
         }
         })
