@@ -1,4 +1,5 @@
 var Promise = TrelloPowerUp.Promise;
+const key = "2905a45608f989a24bf26e3d92edcf80"
 
 $(document).ready(function(){
     $('#meetingstart').datetimepicker({
@@ -27,7 +28,7 @@ $(document).ready(function(){
                 console.log("No token")
             }
             else{
-                fetch(`https://api.trello.com/1/lists?name=${listName}&idBoard=${context.board}&key=2905a45608f989a24bf26e3d92edcf80&token=${token}`, {
+                fetch(`https://api.trello.com/1/lists?name=${listName}&idBoard=${context.board}&key=${key}&token=${token}`, {
                 method: 'POST'
                 })
                 .then(response => {
@@ -38,7 +39,28 @@ $(document).ready(function(){
                 })
                 .then(text => {
                     console.log(text);
-                    t.closeModal();
+                    const id = text.match(/"id":"([\da-z])*"/i)[1]
+                    console.log(id);
+                    fetch(`https://api.trello.com/1/cards?idList=${id}&name=Summary&desc=<Summary>&key=${key}&token=${token}`, {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                    })
+                    .then(response => {
+                        console.log(
+                        `Response: ${response.status} ${response.statusText}`
+                        );
+                    return response.text();
+                    })
+                    .then(text => {
+                        console.log(text)
+                        t.closeModal();
+                    })
+                    .catch(err => {
+                        console.error(err)
+                        t.closeModal();
+                    });
                 })
                 .catch(err => console.error(err));
             }
