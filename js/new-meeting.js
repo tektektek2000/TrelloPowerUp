@@ -1,4 +1,5 @@
 var Promise = TrelloPowerUp.Promise;
+const fetch = require('node-fetch');
 
 $(document).ready(function(){
     $('#meetingstart').datetimepicker({
@@ -13,10 +14,23 @@ $(document).ready(function(){
             appName: 'Test'
         });
         var context = t.getContext();
-        var api = t.getRestApi();
-        
-        console.log(api);
-        console.log(context);
+        var newList = {
+            name: 'Test',
+            desc: 'This is the description of our new card.',
+            // Place this card at the top of our list
+            idList: myList,
+            pos: 'top'
+        };
+        t.getRestApi()
+        .getToken()
+        .then(function(token) {
+            if (!token) {
+                console.log("No token")
+            }
+            else{
+                console.log(token);
+            }
+        });
         t.closeModal();
         event.preventDefault();
     })
