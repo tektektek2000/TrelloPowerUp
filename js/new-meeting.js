@@ -32,15 +32,10 @@ $(document).ready(function(){
                 method: 'POST'
                 })
                 .then(response => {
-                    console.log(
-                    `Response: ${response.status} ${response.statusText}`
-                    );
                     return response.text();
                 })
                 .then(text => {
-                    //console.log(text);
                     const id = text.match(/"id":"([\da-z]*)"/i)[1]
-                    //console.log(id);
                     fetch(`https://api.trello.com/1/cards?idList=${id}&name=Summary&desc=<Summary>&key=${key}&token=${token}`, {
                     method: 'POST',
                     headers: {
