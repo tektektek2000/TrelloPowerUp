@@ -64,7 +64,6 @@ $(document).ready(function(){
                             t.closeModal();
                         });
                     })
-                    })
                     .catch(err => {
                         console.error(err)
                         t.closeModal();
