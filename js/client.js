@@ -11,7 +11,7 @@ function showIframe(t) {
   function showNewMenu(t) {
     return t.modal({
         title: 'New Meeting',
-        url: tc.signUrl('./views/new-meeting.html'),
+        url: t.signUrl('./views/new-meeting.html'),
         fullscreen: false
     });
   }
