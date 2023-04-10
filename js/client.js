@@ -22,17 +22,19 @@ TrelloPowerUp.initialize({
         return t
             .card("all")
             .then(function (card) {
-                let cardRole = t.get(card.id, 'shared', 'meetingCard');
-                console.log(cardRole);
-                if(cardRole && cardRole.role === "Summary"){
-                    return [
-                        {
-                            text: "Summary",
-                            color: "grey"
-                        },
-                    ];
-                }
-                return [];
+                let cardRole = t.get(card.id, 'shared', 'meetingCard')
+                .then( cardRole => {
+                    console.log(cardRole);
+                    if(cardRole && cardRole.role === "Summary"){
+                        return [
+                            {
+                                text: "Summary",
+                                color: "grey"
+                            },
+                        ];
+                    }
+                    return []
+                });
             });
     },
     'board-buttons': function (t, opts) {
