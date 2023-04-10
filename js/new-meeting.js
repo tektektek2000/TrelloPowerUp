@@ -29,7 +29,7 @@ $(document).ready(function(){
             }
             else{
                 fetch(`https://api.trello.com/1/lists?name=${listName}&idBoard=${context.board}&key=${key}&token=${token}`, {
-                method: 'POST'
+                    method: 'POST'
                 })
                 .then(response => {
                     return response.text();
@@ -45,28 +45,30 @@ $(document).ready(function(){
                     .then(response => {
                         return response.text();
                     })
-                    .then(text => {var cardJson = text;})
-                    .then(setTimeout(() => {
-                        console.log(cardJson);
-                        const id = cardJson.match(/"id":"([\da-z]*)"/i)[1];
-                        console.log(id);
-                        t.set(id, 'shared', 'meetingCard', {
-                            role: "Summary",
-                            startDate: `${match[1]}/${match[2]}/${match[3]}`,
-                            startHour: starthour,
-                            startMinutes: parseInt(match[5]),
-                            endHour: endhour,
-                            endMinutes: parseInt(match[8])
-                        })
-                        .then(idk => {
-                            t.closeModal();
-                        })
-                        .catch(err => {
-                            console.error(err)
-                            t.closeModal();
+                    .then(text => {
+                        var cardJson = text;
+                        setTimeout(() => {return cardJson},100)
+                        .then(() => {
+                            console.log(cardJson);
+                            const id = cardJson.match(/"id":"([\da-z]*)"/i)[1];
+                            console.log(id);
+                            t.set(id, 'shared', 'meetingCard', {
+                                role: "Summary",
+                                startDate: `${match[1]}/${match[2]}/${match[3]}`,
+                                startHour: starthour,
+                                startMinutes: parseInt(match[5]),
+                                endHour: endhour,
+                                endMinutes: parseInt(match[8])
+                            })
+                            .then(idk => {
+                                t.closeModal();
+                            })
+                            .catch(err => {
+                                console.error(err)
+                                t.closeModal();
+                            });
                         });
-                    }
-                    , 100))
+                    })
                     .catch(err => {
                         console.error(err)
                         t.closeModal();
