@@ -28,15 +28,11 @@ var creationSuccess = function (data) {
   console.log(JSON.stringify(data, null, 2));
 };
 
-var newCard = {
-  name: 'New Test Card',
-  desc: 'This is the description of our new card.',
-  // Place this card at the top of our list
-  idList: myList,
-  pos: 'top'
+var newList = {
+  name: 'Test',
 };
 
-window.Trello.post('/cards/', newCard, creationSuccess);
+window.Trello.post('/lists/', newList, creationSuccess);
 
 TrelloPowerUp.initialize({
     // Start adding handlers for your capabilities here!
