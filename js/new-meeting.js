@@ -1,5 +1,4 @@
 var Promise = TrelloPowerUp.Promise;
-const fetch = require('node-fetch');
 
 $(document).ready(function(){
     $('#meetingstart').datetimepicker({
