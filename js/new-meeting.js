@@ -21,20 +21,20 @@ $(document).ready(function(){
                 console.log("No token")
             }
             else{
-                fetch(`https://api.trello.com/1/lists?name=${listName}&idBoard=${context.board}&key=2905a45608f989a24bf26e3d92edcf80&token=${apptoken}`, {
+                fetch(`https://api.trello.com/1/lists?name=${listName}&idBoard=${context.board}&key=2905a45608f989a24bf26e3d92edcf80&token=${token}`, {
                 method: 'POST'
                 })
                 .then(response => {
                     console.log(
                     `Response: ${response.status} ${response.statusText}`
                     );
+                    t.closeModal();
+                    event.preventDefault();
                     return response.text();
                 })
                 .then(text => console.log(text))
                 .catch(err => console.error(err));
             }
-            t.closeModal();
-            event.preventDefault();
         });
     })
 });
