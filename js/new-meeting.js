@@ -22,8 +22,8 @@ $(document).ready(function(){
             else{
                 console.log(token);
             }
+            t.closeModal();
+            event.preventDefault();
         });
-        t.closeModal();
-        event.preventDefault();
     })
 });
