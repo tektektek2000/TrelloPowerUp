@@ -47,6 +47,7 @@ $(document).ready(function(){
                     })
                     .then(text => {
                         const id = text.match(/"id":"([\da-z]*)"/i)[1];
+                        console.log(id);
                         t.set(id, 'shared', 'meetingCard', {
                             role: "Summary",
                             startDate: `${match[1]}/${match[2]}/${match[3]}`,
@@ -54,8 +55,9 @@ $(document).ready(function(){
                             startMinutes: parseInt(match[5]),
                             endHour: endhour,
                             endMinutes: parseInt(match[8])
+                        }).then(idk => {
+                            t.closeModal();
                         });
-                        t.closeModal();
                     })
                     .catch(err => {
                         console.error(err)
