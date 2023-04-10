@@ -64,11 +64,12 @@ $(document).ready(function(){
                             console.error(err)
                             t.closeModal();
                         });
-                    })
+                    }
+                    , 100))
                     .catch(err => {
                         console.error(err)
                         t.closeModal();
-                    }, 100));
+                    });
                 })
                 .catch(err => console.error(err));
             }
