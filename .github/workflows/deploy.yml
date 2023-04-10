@@ -12,10 +12,8 @@ permissions:
   contents: write
   deployments: write
   packages: write
-  pages: read|write|none
+  pages: write
   repository-projects: write
-  statuses: read|write|none
-  # Needed for the 'trilom/file-changes-action' action
   pull-requests: read
 
 jobs:
