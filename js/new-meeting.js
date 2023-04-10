@@ -45,9 +45,10 @@ $(document).ready(function(){
                     .then(response => {
                         return response.text();
                     })
-                    .then(setTimeout(text => {
-                        console.log(text);
-                        const id = text.match(/"id":"([\da-z]*)"/i)[1];
+                    .then(text => {var cardJson = text;})
+                    .then(setTimeout(() => {
+                        console.log(cardJson);
+                        const id = cardJson.match(/"id":"([\da-z]*)"/i)[1];
                         console.log(id);
                         t.set(id, 'shared', 'meetingCard', {
                             role: "Summary",
