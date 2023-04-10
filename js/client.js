@@ -29,7 +29,7 @@ TrelloPowerUp.initialize({
                         return [
                             {
                                 text: "Summary",
-                                color: "grey"
+                                color: "green"
                             },
                         ];
                     }
