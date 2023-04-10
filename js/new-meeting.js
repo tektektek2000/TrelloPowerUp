@@ -1,3 +1,5 @@
+import * as api from "api.js"
+
 var Promise = TrelloPowerUp.Promise;
 const key = "2905a45608f989a24bf26e3d92edcf80"
 
