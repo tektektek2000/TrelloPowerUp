@@ -12,6 +12,7 @@ $(document).ready(function(){
             appKey: '2905a45608f989a24bf26e3d92edcf80',
             appName: 'Test'
         });
+        event.preventDefault();   
         var context = t.getContext();
         var listName = "test";
         t.getRestApi()
@@ -33,7 +34,6 @@ $(document).ready(function(){
                 .then(text => {
                     console.log(text);
                     t.closeModal();
-                    event.preventDefault();   
                 })
                 .catch(err => console.error(err));
             }
