@@ -85,9 +85,13 @@ TrelloPowerUp.initialize({
                             //const url = window.location.href.match(/(*)\/views/i)
                             return {
                                 title: 'Summary Card',
+                                icon: {
+                                    light: "https://tektektek2000.github.io/TrelloPowerUp/develop/icons/summary.jpg",
+                                    dark: "https://tektektek2000.github.io/TrelloPowerUp/develop/icons/summary.jpg"
+                                },
                                 content: {
                                     type: 'iframe',
-                                    url: t.signUrl('../views/summary-section.html'),
+                                    url: t.signUrl('views/summary-section.html'),
                                     height: 500, // Max height is 1500.
                                 },
                                 action: {
