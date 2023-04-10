@@ -19,12 +19,11 @@ function showIframe(t) {
 TrelloPowerUp.initialize({
     // Start adding handlers for your capabilities here!
     "card-badges": function (t, opts) {
-        let cardAttachments = opts.attachments; // Trello passes you the attachments on the card
-        console.log(cardAttachments);
         return t
             .card("all")
             .then(function (card) {
                 let cardRole = t.get(card.id, 'shared', 'meetingCard');
+                console.log(cardRole);
                 if(cardRole && cardRole.role === "summary"){
                     return [
                         {
