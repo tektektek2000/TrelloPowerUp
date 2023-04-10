@@ -85,7 +85,7 @@ TrelloPowerUp.initialize({
                             //const url = window.location.href.match(/(*)\/views/i)
                             return {
                                 title: 'Summary Card',
-                                icon: options.icon,
+                                icon: GRAY_ICON, //I just wanna dieeeeeee
                                 content: {
                                     type: 'iframe',
                                     url: t.signUrl(TrelloPowerUp.util.relativeUrl('/views/summary-section.html')),
