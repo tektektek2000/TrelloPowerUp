@@ -34,9 +34,13 @@ TrelloPowerUp.initialize({
                         console.log(cardRole);
                         return [
                             {
-                                text: `Length: ${durationHours}:${durationMinutes}`,
+                                text: `🕒 ${cardRole.startHour}:${cardRole.startMinutes}-${cardRole.endHour}:${cardRole.endMinutes}`,
                                 color: "green"
                             },
+                            {
+                                text: `Length: ${durationHours}:${durationMinutes}`,
+                                color: "green"
+                            }
                         ];
                     }
                     return [];

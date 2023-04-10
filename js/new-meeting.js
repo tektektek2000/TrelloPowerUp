@@ -24,7 +24,7 @@ $(document).ready(function(){
         const match = listName.match(regex);
         var starthour = match[4] === "12" ? (match[6] === "am" ? 0 : 12) : (match[6] === "am" ? parseInt(match[4]) : parseInt(match[4]) + 12);
         var endhour = match[7] === "12" ? (match[9] === "am" ? 0 : 12) : (match[9] === "am" ? parseInt(match[7]) : parseInt(match[7]) + 12);
-        listName = $("#meetingName")[0].value + " " + `${match[1]}/${match[2]}/${match[3]} ${starthour}:${match[5]}-${endhour}:${match[8]}`;
+        listName = $("#meetingName")[0].value + " " + `${match[1]}/${match[2]}/${match[3]}`;
         t.getRestApi()
         .getToken()
         .then(function(token) {
