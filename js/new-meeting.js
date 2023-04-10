@@ -46,6 +46,7 @@ $(document).ready(function(){
                         return response.text();
                     })
                     .then(text => {
+                        console.log(text);
                         const id = text.match(/"id":"([\da-z]*)"/i)[1];
                         console.log(id);
                         t.set(id, 'shared', 'meetingCard', {
