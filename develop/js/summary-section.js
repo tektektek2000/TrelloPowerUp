@@ -1,5 +1,5 @@
 function eventHandler(date, oldDate){
-    console.log("Something");
+    console.log(date);
 }
 
 $(document).ready(function(){  
