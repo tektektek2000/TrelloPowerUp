@@ -93,7 +93,7 @@ TrelloPowerUp.initialize({
                                 },
                                 action: {
                                     text: 'Remove Summary',
-                                    callback: (t) => {},
+                                    callback: (t) => {t.remove('card', 'shared', 'meetingCard');},
                                 }
                             }
                         }
