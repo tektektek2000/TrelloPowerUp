@@ -1,6 +1,12 @@
-function eventHandler(date, oldDate){
+function startEventHandler(date, oldDate){
     console.log(date);
 }
+
+function endEventHandler(date, oldDate){
+    console.log(date);
+}
+
+var savedCardRole;
 
 $(document).ready(function(){  
     var t = window.TrelloPowerUp.iframe({
@@ -10,6 +16,7 @@ $(document).ready(function(){
     t.get('card', 'shared', 'meetingCard')
     .then(cardRole => {
         if (cardRole && cardRole.role === "Summary") {
+            savedCardRole = cardRole;
             console.log(cardRole);
             $('#meetingstart').datetimepicker({
                 format: 'HH:mm',
