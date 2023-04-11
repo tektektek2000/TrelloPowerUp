@@ -12,7 +12,7 @@ function endEventHandler(e){
 
 function refreshCardRole(){
     console.log(savedCardRole);
-    t.set(card, 'shared', 'meetingCard', savedCardRole);
+    t.set('card', 'shared', 'meetingCard', savedCardRole);
 }
 
 var savedCardRole;
