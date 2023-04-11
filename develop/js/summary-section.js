@@ -1,4 +1,5 @@
 function startEventHandler(e){
+    console.log(e.date);
     savedCardRole.startHour = e.date.getHours();
     savedCardRole.startMinutes = e.date.getMinutes();
 }
