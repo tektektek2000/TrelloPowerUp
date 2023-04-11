@@ -16,12 +16,12 @@ function refreshCardRole(){
 }
 
 var savedCardRole;
+var t = window.TrelloPowerUp.iframe({
+    appKey: '2905a45608f989a24bf26e3d92edcf80',
+    appName: 'Test'
+});
 
 $(document).ready(function(){  
-    var t = window.TrelloPowerUp.iframe({
-        appKey: '2905a45608f989a24bf26e3d92edcf80',
-        appName: 'Test'
-    });
     t.get('card', 'shared', 'meetingCard')
     .then(cardRole => {
         if (cardRole && cardRole.role === "Summary") {
