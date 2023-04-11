@@ -53,7 +53,6 @@ $(document).ready(function(){
                             console.log(id);
                             t.set(id, 'shared', 'meetingCard', {
                                 role: "Summary",
-                                startDate: `${match[1]}/${match[2]}/${match[3]}`,
                                 startHour: starthour,
                                 startMinutes: parseInt(match[5]),
                                 endHour: endhour,
