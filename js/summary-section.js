@@ -1,8 +1,8 @@
-function startEventHandler(date, oldDate){
+function startEventHandler(e, date, oldDate){
     console.log(date);
 }
 
-function endEventHandler(date, oldDate){
+function endEventHandler(e, date, oldDate){
     console.log(date);
 }
 
@@ -21,11 +21,11 @@ $(document).ready(function(){
             $('#meetingstart').datetimepicker({
                 format: 'HH:mm',
                 date: new Date(2016, 9 , 17, cardRole.startHour, cardRole.startMinutes)
-            }).on('dp.change',eventHandler);
+            }).on('dp.change',startEventHandler);
             $('#meetingend').datetimepicker({
                 format: 'HH:mm',
                 date: new Date(2016, 9 , 17, cardRole.endHour, cardRole.endMinutes)
-            }).on('dp.change',eventHandler);;
+            }).on('dp.change',endEventHandler);;
         }
     })
 });
