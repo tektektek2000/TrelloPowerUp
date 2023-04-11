@@ -1,9 +1,16 @@
 function startEventHandler(e){
-    console.log(e.date);
+    savedCardRole.startHour = e.date.getHours();
+    savedCardRole.startMinutes = e.date.getMinutes();
 }
 
 function endEventHandler(e){
-    console.log(e.date);
+    savedCardRole.endHour = e.date.getHours();
+    savedCardRole.endMinutes = e.date.getMinutes();
+}
+
+function refreshCardRole(){
+    console.log(savedCardRole);
+    t.set(card, 'shared', 'meetingCard', savedCardRole);
 }
 
 var savedCardRole;
