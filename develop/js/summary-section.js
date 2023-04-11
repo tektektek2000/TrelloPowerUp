@@ -1,6 +1,12 @@
-function eventHandler(date, oldDate){
+function startEventHandler(e, date, oldDate){
     console.log(date);
 }
+
+function endEventHandler(e, date, oldDate){
+    console.log(date);
+}
+
+var savedCardRole;
 
 $(document).ready(function(){  
     var t = window.TrelloPowerUp.iframe({
@@ -10,15 +16,16 @@ $(document).ready(function(){
     t.get('card', 'shared', 'meetingCard')
     .then(cardRole => {
         if (cardRole && cardRole.role === "Summary") {
+            savedCardRole = cardRole;
             console.log(cardRole);
             $('#meetingstart').datetimepicker({
                 format: 'HH:mm',
                 date: new Date(2016, 9 , 17, cardRole.startHour, cardRole.startMinutes)
-            }).on('dp.change',eventHandler);
+            }).on('dp.change',startEventHandler);
             $('#meetingend').datetimepicker({
                 format: 'HH:mm',
                 date: new Date(2016, 9 , 17, cardRole.endHour, cardRole.endMinutes)
-            }).on('dp.change',eventHandler);;
+            }).on('dp.change',endEventHandler);;
         }
     })
 });
