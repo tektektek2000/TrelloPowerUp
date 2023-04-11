@@ -1,12 +1,13 @@
 function startEventHandler(e){
-    console.log(e.date);
     savedCardRole.startHour = e.date._d.getHours();
     savedCardRole.startMinutes = e.date._d.getMinutes();
+    refreshCardRole();
 }
 
 function endEventHandler(e){
     savedCardRole.endHour = e.date._d.getHours();
     savedCardRole.endMinutes = e.date._d.getMinutes();
+    refreshCardRole();
 }
 
 function refreshCardRole(){
