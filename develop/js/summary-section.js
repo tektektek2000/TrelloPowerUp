@@ -1,9 +1,9 @@
-function startEventHandler(e, date, oldDate){
-    console.log(date);
+function startEventHandler(e){
+    console.log(e.date);
 }
 
-function endEventHandler(e, date, oldDate){
-    console.log(date);
+function endEventHandler(e){
+    console.log(e.date);
 }
 
 var savedCardRole;
