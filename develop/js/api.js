@@ -13,4 +13,19 @@ function addCard(cardName, cardDesc, listID, apiKey, token){
     })
 }
 
-export {addList,addCard}
+function getCardsFromList(listID, apiKey, token){
+    return fetch(`https://api.trello.com/1/lists/${listID}/cards?key=${apiKey}&token=${token}`, {
+        method: 'GET',
+        headers: {
+        'Accept': 'application/json'
+        }
+    })
+    .then(response => {
+        console.log(
+        `Response: ${response.status} ${response.statusText}`
+        );
+        return response.text();
+    })
+}
+
+export {addList,addCard,getCardsFromList}

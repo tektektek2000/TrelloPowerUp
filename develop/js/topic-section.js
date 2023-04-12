@@ -4,10 +4,6 @@ var Promise = TrelloPowerUp.Promise;
 const key = "2905a45608f989a24bf26e3d92edcf80"
 
 function inputChanged(e) {
-    var t = window.TrelloPowerUp.iframe({
-        appKey: '2905a45608f989a24bf26e3d92edcf80',
-        appName: 'Test'
-    });
     t.set('card', 'shared', 'meetingCard', {
         role: "Topic",
         hours: parseInt($('#topichours')[0].value),
@@ -15,7 +11,19 @@ function inputChanged(e) {
     })
 }
 
+var t = window.TrelloPowerUp.iframe({
+    appKey: '2905a45608f989a24bf26e3d92edcf80',
+    appName: 'Test'
+});
+
 $(document).ready(function(){
-    $('#topichours')[0].addEventListener("input", inputChanged);
-    $('#topicminutes')[0].addEventListener("input", inputChanged);
+    t.get('card', 'shared', 'meetingCard')
+    .then(cardRole => {
+        if (cardRole && cardRole.role === "Summary") {
+            $('#topichours')[0].value=`${cardRole.hours}`;
+            $('#topicminutes')[0].value=`${cardRole.minutes}`;
+            $('#topichours')[0].addEventListener("input", inputChanged);
+            $('#topicminutes')[0].addEventListener("input", inputChanged);
+        }
+    })
 });

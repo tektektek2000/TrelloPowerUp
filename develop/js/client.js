@@ -30,6 +30,15 @@ function makeTopicCard(t){
     });
 }
 
+function getListTopicCardsDuration(t, listID){
+    return t.getRestApi()
+        .getToken()
+        .then(token => {
+            var cards = JSON.parse(api.getCardsFromList(listID,'2905a45608f989a24bf26e3d92edcf80',token));
+            console.log(cards);
+        })
+}
+
 TrelloPowerUp.initialize({
     // Start adding handlers for your capabilities here!
     "card-badges": function (t, opts) {
@@ -46,7 +55,7 @@ TrelloPowerUp.initialize({
                                     durationHours--;
                                     durationMinutes += 60;
                                 }
-                                console.log(cardRole);
+                                var diff = (durationHours * 60 + durationMinutes) - getListTopicCardsDuration(t,card.idList);
                                 return [
                                     {
                                         text: `🕒 ${ToTwoDigit(cardRole.startHour)}:${ToTwoDigit(cardRole.startMinutes)}-${ToTwoDigit(cardRole.endHour)}:${ToTwoDigit(cardRole.endMinutes)}`,
