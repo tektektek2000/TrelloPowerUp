@@ -62,7 +62,7 @@ TrelloPowerUp.initialize({
                                 return [
                                     {
                                         text: `${ToTwoDigit(cardRole.hours)} h ${ToTwoDigit(cardRole.minutes)} m`,
-                                        color: "black"
+                                        color: "light-gray"
                                     }
                                 ];
                             }
@@ -99,7 +99,6 @@ TrelloPowerUp.initialize({
                 return t.get(card.id, 'shared', 'meetingCard')
                     .then(cardRole => {
                         if (cardRole && cardRole.role === "Summary") {
-                            //const url = window.location.href.match(/(*)\/views/i)
                             return {
                                 title: 'Summary Card',
                                 icon: t.signUrl(TrelloPowerUp.util.relativeUrl("./icons/summary.png")),
@@ -110,6 +109,21 @@ TrelloPowerUp.initialize({
                                 },
                                 action: {
                                     text: 'Remove Summary',
+                                    callback: (t) => {t.remove('card', 'shared', 'meetingCard');},
+                                }
+                            }
+                        }
+                        else if (cardRole && cardRole.role === "Topic") {
+                            return {
+                                title: 'Topic Card',
+                                icon: t.signUrl(TrelloPowerUp.util.relativeUrl("./icons/summary.png")),
+                                content: {
+                                    type: 'iframe',
+                                    url: t.signUrl(TrelloPowerUp.util.relativeUrl('./views/topic-section.html')),
+                                    height: 80,
+                                },
+                                action: {
+                                    text: 'Remove Topic',
                                     callback: (t) => {t.remove('card', 'shared', 'meetingCard');},
                                 }
                             }
