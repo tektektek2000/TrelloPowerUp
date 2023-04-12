@@ -92,7 +92,7 @@ TrelloPowerUp.initialize({
                                 content: {
                                     type: 'iframe',
                                     url: t.signUrl(TrelloPowerUp.util.relativeUrl('./views/summary-section.html')),
-                                    height: 500, // Max height is 1500.
+                                    height: 80, // Max height is 1500.
                                 },
                                 action: {
                                     text: 'Remove Summary',
