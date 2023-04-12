@@ -79,7 +79,6 @@ TrelloPowerUp.initialize({
             })
     },
     'card-back-section': function (t, options) {
-        console.log(TrelloPowerUp.util.relativeUrl('/views/summary-section.html'));
         return t
             .card("all")
             .then(function (card) {
@@ -105,12 +104,24 @@ TrelloPowerUp.initialize({
             })
     },
     'card-buttons': function (t, opts) {
-        return [{
-            icon: t.signUrl(TrelloPowerUp.util.relativeUrl("./icons/summary.png")),
-            text: 'Topic Card',
-            callback: makeTopicCard,
-            condition: 'edit'
-        }];
+        return t
+            .card("all")
+            .then(function (card) {
+                return t.get(card.id, 'shared', 'meetingCard')
+                    .then(cardRole => {
+                        if (!cardRole) {
+                            return [{
+                                icon: t.signUrl(TrelloPowerUp.util.relativeUrl("./icons/summary.png")),
+                                text: 'Topic Card',
+                                callback: makeTopicCard,
+                                condition: 'edit'
+                            }];
+                        }
+                        else{
+                            return [];
+                        }
+                    })
+            })
       }
 }, {
     appKey: '2905a45608f989a24bf26e3d92edcf80',
