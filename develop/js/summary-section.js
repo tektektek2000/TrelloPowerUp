@@ -35,8 +35,8 @@ $(document).ready(function(){
         if (cardRole && cardRole.role === "Summary") {
             savedCardRole = cardRole;
             console.log(cardRole);
-            $('#meetingstart')[0].value=`${cardRole.startHour}:${cardRole.startMinutes}`;
-            $('#meetingend')[0].value=`${cardRole.endHour}:${cardRole.endMinutes}`;
+            $('#meetingstart')[0].value=`${ToTwoDigit(cardRole.startHour)}:${ToTwoDigit(cardRole.startMinutes)}`;
+            $('#meetingend')[0].value=`${ToTwoDigit(cardRole.endHour)}:${ToTwoDigit(cardRole.endMinutes)}`;
         }
     })
 });
