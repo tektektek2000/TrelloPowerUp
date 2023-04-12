@@ -14,9 +14,9 @@ $(document).ready(function(){
             appName: 'Test'
         });
         event.preventDefault();   
-        t.set(id, 'shared', 'meetingCard', {
+        t.set('card', 'shared', 'meetingCard', {
             role: "Topic",
-            hour: parseInt($('#topichours')[0].value),
+            hours: parseInt($('#topichours')[0].value),
             minutes: parseInt($('#topicminutes')[0].value),
         })
         .then(idk => {

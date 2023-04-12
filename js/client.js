@@ -38,24 +38,34 @@ TrelloPowerUp.initialize({
             .then(function (card) {
                 return t.get(card.id, 'shared', 'meetingCard')
                     .then(cardRole => {
-                        if (cardRole && cardRole.role === "Summary") {
-                            var durationHours = cardRole.startHour < cardRole.endHour ? cardRole.endHour - cardRole.startHour : 24 - cardRole.startHour + cardRole.endHour;
-                            var durationMinutes = cardRole.endMinutes - cardRole.startMinutes;
-                            if (durationMinutes < 0) {
-                                durationHours--;
-                                durationMinutes += 60;
-                            }
-                            console.log(cardRole);
-                            return [
-                                {
-                                    text: `🕒 ${ToTwoDigit(cardRole.startHour)}:${ToTwoDigit(cardRole.startMinutes)}-${ToTwoDigit(cardRole.endHour)}:${ToTwoDigit(cardRole.endMinutes)}`,
-                                    color: "blue"
-                                },
-                                {
-                                    text: `Length: ${durationHours} h ${durationMinutes} m`,
-                                    color: "light-gray"
+                        if (cardRole){
+                            if(cardRole.role === "Summary"){
+                                var durationHours = cardRole.startHour < cardRole.endHour ? cardRole.endHour - cardRole.startHour : 24 - cardRole.startHour + cardRole.endHour;
+                                var durationMinutes = cardRole.endMinutes - cardRole.startMinutes;
+                                if (durationMinutes < 0) {
+                                    durationHours--;
+                                    durationMinutes += 60;
                                 }
-                            ];
+                                console.log(cardRole);
+                                return [
+                                    {
+                                        text: `🕒 ${ToTwoDigit(cardRole.startHour)}:${ToTwoDigit(cardRole.startMinutes)}-${ToTwoDigit(cardRole.endHour)}:${ToTwoDigit(cardRole.endMinutes)}`,
+                                        color: "blue"
+                                    },
+                                    {
+                                        text: `Length: ${durationHours} h ${durationMinutes} m`,
+                                        color: "light-gray"
+                                    }
+                                ];
+                            }
+                            else if(cardRole.role === "Topic"){
+                                return [
+                                    {
+                                        text: `${ToTwoDigit(cardRole.hours)} h ${ToTwoDigit(cardRole.minutes)} m`,
+                                        color: "black"
+                                    }
+                                ];
+                            }
                         }
                         return [];
                     });
