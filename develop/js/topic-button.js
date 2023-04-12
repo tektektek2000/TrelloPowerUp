@@ -9,19 +9,18 @@ function sleep(ms) {
 
 $(document).ready(function(){
     $('#meetingForm').submit(function(event){
-        event.preventDefault();   
-        var listName =  $("#meetingstart")[0].value  + "-" + $("#meetingend")[0].value ;
-        console.log(listName);
-        const regex = /(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d)-(\d\d):(\d\d)/i;
-        const match = listName.match(regex);
-        var starthour = parseInt(match[4]);
-        var endhour = parseInt(match[6]);
-        listName = $("#meetingName")[0].value + " " + `${match[1]}/${match[2]}/${match[3]}`;
-        var context = t.getContext();
         var t = window.TrelloPowerUp.iframe({
             appKey: '2905a45608f989a24bf26e3d92edcf80',
             appName: 'Test'
         });
+        event.preventDefault();   
+        var context = t.getContext();
+        var listName =  $("#meetingstart")[0].value  + "-" + $("#meetingend")[0].value ;
+        const regex = /(\d\d\d\d)-(\d\d)-(\d\d) (\d\d):(\d\d)-(\d\d):(\d\d)/i;
+        const match = listName.match(regex);
+        var starthour = parseInt(match[4]);
+        var endhour = parseInt(match[6]);
+        listName = $("#meetingName")[0].value + " " + `${match[1]}/${match[2]}/${match[3]}`;
         t.getRestApi()
         .getToken()
         .then(function(token) {

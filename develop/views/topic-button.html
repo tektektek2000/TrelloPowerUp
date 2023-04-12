@@ -9,19 +9,23 @@
 
     <script src="https://p.trellocdn.com/power-up.min.js"></script>
     <script src="https://trello.com/1/client.js?key=2905a45608f989a24bf26e3d92edcf80"></script>
-    <script type="module" src="../js/summary-section.js"></script>
+    <script type="module" src="../js/topic-button.js"></script>
 </head>
  
 <body>
     <div class="container" style="margin:100px">
-        <form class="row">
-            <label for="lengthgroup">Meeting:</label>
+        <form class="row" id="meetingForm">  
+            <label for="lengthgroup">Label:</label>
             <div class="input-group mb-12" id="lengthgroup">
-                <input class="form-control col-md-2"
-                    type="time" id="meetingstart" required/>
-                    <span class="input-group-text">To</span>
-                <input class="form-control col-md-2"
-                    type="time" id="meetingend"  required/>
+                <input class="form-control col-md-1"
+                    type="number" id="topichours" value="0" min="0" max="24" required/>
+                <span class="input-group-text">h</span>
+                <input class="form-control col-md-1"
+                    type="number" id="topicminutes" value="0" max="59" required/>
+                <span class="input-group-text">m</span>
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-primary" type="submit" id="createmeeting">Create meeting</button>
             </div>
         </form>
     </div>
