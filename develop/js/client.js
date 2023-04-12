@@ -7,14 +7,14 @@ function ToTwoDigit(num) {
     return num < 10 ? `0${num}` : num;
 }
 
-function showIframe(t) {
+function showAuth(t) {
     return t.popup({
         title: 'Authorize to continue',
         url: 'views/authorize.html'
     });
 }
 
-function showNewMenu(t) {
+function showNewMeetingMenu(t) {
     return t.modal({
         title: 'New Meeting',
         url: t.signUrl('views/new-meeting.html'),
@@ -23,7 +23,11 @@ function showNewMenu(t) {
 }
 
 function makeTopicCard(t){
-
+    return t.modal({
+        title: 'Topic',
+        url: t.signUrl('views/topic-button.html'),
+        fullscreen: false
+    });
 }
 
 TrelloPowerUp.initialize({
@@ -67,13 +71,13 @@ TrelloPowerUp.initialize({
                         // we can either provide a button that has a callback function
                         text: 'New Meeting',
                         condition: "edit",
-                        callback: showNewMenu
+                        callback: showNewMeetingMenu
                     }];
                 } else {
                     return [{
                         text: 'New Meeting',
                         condition: "edit",
-                        callback: showIframe
+                        callback: showAuth
                     }];
                 }
             })
