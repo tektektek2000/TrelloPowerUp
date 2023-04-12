@@ -1,12 +1,18 @@
+function ToTwoDigit(num) {
+    return num < 10 ? `0${num}` : num;
+}
+
 function startEventHandler(e){
-    savedCardRole.startHour = e.date._d.getHours();
-    savedCardRole.startMinutes = e.date._d.getMinutes();
+    var match = e.srcElement.value.match(/(\d\d):(\d\d)/i)
+    savedCardRole.startHour = parseInt(match[1]);
+    savedCardRole.startMinutes = parseInt(match[2]);
     refreshCardRole();
 }
 
 function endEventHandler(e){
-    savedCardRole.endHour = e.date._d.getHours();
-    savedCardRole.endMinutes = e.date._d.getMinutes();
+    var match = e.srcElement.value.match(/(\d\d):(\d\d)/i)
+    savedCardRole.endHour = parseInt(match[1]);
+    savedCardRole.endMinutes = parseInt(match[2]);
     refreshCardRole();
 }
 
@@ -16,25 +22,21 @@ function refreshCardRole(){
 }
 
 var savedCardRole;
-var t = window.TrelloPowerUp.iframe({
-    appKey: '2905a45608f989a24bf26e3d92edcf80',
-    appName: 'Test'
-});
 
 $(document).ready(function(){  
+    $('#meetingstart')[0].addEventListener("change", startEventHandler);
+    $('#meetingend')[0].addEventListener("change", startEventHandler);
+    var t = window.TrelloPowerUp.iframe({
+        appKey: '2905a45608f989a24bf26e3d92edcf80',
+        appName: 'Test'
+    });
     t.get('card', 'shared', 'meetingCard')
     .then(cardRole => {
         if (cardRole && cardRole.role === "Summary") {
             savedCardRole = cardRole;
             console.log(cardRole);
-            $('#meetingstart').datetimepicker({
-                format: 'HH:mm',
-                date: new Date(2016, 9 , 17, cardRole.startHour, cardRole.startMinutes)
-            }).on('dp.change',startEventHandler);
-            $('#meetingend').datetimepicker({
-                format: 'HH:mm',
-                date: new Date(2016, 9 , 17, cardRole.endHour, cardRole.endMinutes)
-            }).on('dp.change',endEventHandler);;
+            $('#meetingstart')[0].value=`${cardRole.startHour}:${cardRole.startMinutes}`;
+            $('#meetingend')[0].value=`${cardRole.endHour}:${cardRole.endMinutes}`;
         }
     })
 });
