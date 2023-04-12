@@ -22,6 +22,10 @@ function showNewMenu(t) {
     });
 }
 
+function makeTopicCard(t){
+
+}
+
 TrelloPowerUp.initialize({
     // Start adding handlers for your capabilities here!
     "card-badges": function (t, opts) {
@@ -99,7 +103,15 @@ TrelloPowerUp.initialize({
                         }
                     })
             })
-    }
+    },
+    'card-buttons': function (t, opts) {
+        return [{
+            icon: t.signUrl(TrelloPowerUp.util.relativeUrl("./icons/summary.png")),
+            text: 'Topic Card',
+            callback: makeTopicCard,
+            condition: 'edit'
+        }];
+      }
 }, {
     appKey: '2905a45608f989a24bf26e3d92edcf80',
     appName: 'Test'
