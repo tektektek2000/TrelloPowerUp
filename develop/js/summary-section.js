@@ -28,15 +28,14 @@ var t = window.TrelloPowerUp.iframe({
 });
 
 $(document).ready(function(){  
-    $('#meetingstart')[0].addEventListener("change", startEventHandler);
-    $('#meetingend')[0].addEventListener("change", startEventHandler);
     t.get('card', 'shared', 'meetingCard')
     .then(cardRole => {
         if (cardRole && cardRole.role === "Summary") {
             savedCardRole = cardRole;
-            console.log(cardRole);
             $('#meetingstart')[0].value=`${ToTwoDigit(cardRole.startHour)}:${ToTwoDigit(cardRole.startMinutes)}`;
             $('#meetingend')[0].value=`${ToTwoDigit(cardRole.endHour)}:${ToTwoDigit(cardRole.endMinutes)}`;
+            $('#meetingstart')[0].addEventListener("change", startEventHandler);
+            $('#meetingend')[0].addEventListener("change", endEventHandler);
         }
     })
 });
