@@ -24,7 +24,7 @@ $(document).ready(function(){
         var context = t.getContext();
         t.getRestApi()
         .getToken()
-        .then(function(token) {
+        .then(token => {
             if (!token) {
                 console.log("No token")
             }
