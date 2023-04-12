@@ -34,8 +34,8 @@ $(document).ready(function(){
             savedCardRole = cardRole;
             $('#meetingstart')[0].value=`${ToTwoDigit(cardRole.startHour)}:${ToTwoDigit(cardRole.startMinutes)}`;
             $('#meetingend')[0].value=`${ToTwoDigit(cardRole.endHour)}:${ToTwoDigit(cardRole.endMinutes)}`;
-            $('#meetingstart')[0].addEventListener("change", startEventHandler);
-            $('#meetingend')[0].addEventListener("change", endEventHandler);
+            $('#meetingstart')[0].addEventListener("input", startEventHandler);
+            $('#meetingend')[0].addEventListener("input", endEventHandler);
         }
     })
 });
