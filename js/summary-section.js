@@ -17,7 +17,7 @@ function endEventHandler(e){
 }
 
 function refreshCardRole(){
-    console.log(savedCardRole);
+    //console.log(savedCardRole);
     t.set('card', 'shared', 'meetingCard', savedCardRole);
 }
 
