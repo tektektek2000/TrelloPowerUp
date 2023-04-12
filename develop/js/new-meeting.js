@@ -17,11 +17,11 @@ $(document).ready(function(){
         var starthour = parseInt(match[4]);
         var endhour = parseInt(match[6]);
         listName = $("#meetingName")[0].value + " " + `${match[1]}/${match[2]}/${match[3]}`;
-        var context = t.getContext();
         var t = window.TrelloPowerUp.iframe({
             appKey: '2905a45608f989a24bf26e3d92edcf80',
             appName: 'Test'
         });
+        var context = t.getContext();
         t.getRestApi()
         .getToken()
         .then(function(token) {
