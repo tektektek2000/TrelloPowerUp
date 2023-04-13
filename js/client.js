@@ -34,8 +34,10 @@ function getListTopicCardsDuration(t, listID){
     return t.getRestApi()
         .getToken()
         .then(token => {
-            var cards = api.getCardsFromList(listID,'2905a45608f989a24bf26e3d92edcf80',token);
-            console.log(cards);
+            api.getCardsFromList(listID,'2905a45608f989a24bf26e3d92edcf80',token)
+            .then(cards => {
+                console.log(cards);
+            })
         })
 }
 
