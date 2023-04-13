@@ -21,14 +21,10 @@ function getCardsFromList(listID, apiKey, token){
         }
     })
     .then(response => {
-        console.log(
-        `Response: ${response.status} ${response.statusText}`
-        );
         return response.text();
     })
     .then(text => {
         var cards = JSON.parse(text);
-        console.log(cards);
         return cards;
     });
 }
