@@ -38,7 +38,7 @@ function getListTopicCardsDuration(t, listID){
             .then(cards => {
                 var sum = 0;
                 cards.forEach(card => {
-                    sum += t.get(id, 'shared', 'meetingCard')
+                    sum += t.get(card.id, 'shared', 'meetingCard')
                     .then(cardRole => {
                         if (cardRole && cardRole.role === "Topic") {
                             return cardRole.hours * 60 + cardRole.minutes;
