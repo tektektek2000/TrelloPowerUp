@@ -35,18 +35,24 @@ function getListTopicCardsDuration(t, listID){
         .getToken()
         .then(token => {
             return api.getCardsFromList(listID,'2905a45608f989a24bf26e3d92edcf80',token)
-            .then(cards => {
-                var sum = 0;
+            .then(cards => {              
                 cards.forEach(card => {
-                    sum += t.get(card.id, 'shared', 'meetingCard')
-                    .then(cardRole => {
-                        if (cardRole && cardRole.role === "Topic") {
-                            return cardRole.hours * 60 + cardRole.minutes;
-                        }
-                        return 0;
-                    })
+                    
                 });
-                return sum;
+                return () => {
+                    for(const card of cards){
+                        t.get(card.id, 'shared', 'meetingCard')
+                        .then(cardRole => {
+                            if (cardRole && cardRole.role === "Topic") {
+                                return cardRole.hours * 60 + cardRole.minutes;
+                            }
+                            return 0;
+                        })
+                        .then(val => {
+                            sum += val;
+                        })
+                    }
+                };
             })
         });
 }
