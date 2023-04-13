@@ -58,7 +58,7 @@ TrelloPowerUp.initialize({
                                     durationHours--;
                                     durationMinutes += 60;
                                 }
-                                getListTopicCardsDuration(t,card.idList)
+                                return getListTopicCardsDuration(t,card.idList)
                                 .then(cards => {
                                     var diff = (durationHours * 60 + durationMinutes);
                                     return [
