@@ -31,11 +31,17 @@ function makeTopicCard(t){
 }
 
 function getListTopicCardsDuration(t, listID){
-    return t.getRestApi()
+    var ret = t.getRestApi()
         .getToken()
         .then(token => {
             return api.getCardsFromList(listID,'2905a45608f989a24bf26e3d92edcf80',token)
-        })
+            .then(cards => {
+                console.log(cards);
+                return cards;
+            })
+        });
+    console.log(ret);
+    return ret;
 }
 
 TrelloPowerUp.initialize({
