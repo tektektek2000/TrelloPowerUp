@@ -88,7 +88,7 @@ TrelloPowerUp.initialize({
                                             .then(topicDuration => {
                                                 return {
                                                     text: `Scheduled: ${Math.floor(topicDuration/60)} h ${topicDuration%60} m`,
-                                                    color: (durationHours * 60 + durationMinutes) - topicDuration < 0 ? 'red' : 'yellow',
+                                                    color: (durationHours * 60 + durationMinutes) - topicDuration < 0 ? 'red' : 'green',
                                                     refresh: 5
                                                 }
                                             })
