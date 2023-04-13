@@ -1,4 +1,3 @@
-/* global TrelloPowerUp */
 import * as api from "./api.js"
 
 var Promise = TrelloPowerUp.Promise;
@@ -58,7 +57,6 @@ function getListTopicCardsDuration(t, listID){
 }
 
 TrelloPowerUp.initialize({
-    // Start adding handlers for your capabilities here!
     "card-badges": function (t, opts) {
         return t
             .card("all")
@@ -111,12 +109,10 @@ TrelloPowerUp.initialize({
     },
     'board-buttons': function (t, opts) {
         return t.getRestApi()
-            // We now have an instance of the API client.
             .isAuthorized()
             .then(function (isAuthorized) {
                 if (isAuthorized) {
                     return [{
-                        // we can either provide a button that has a callback function
                         text: 'New Meeting',
                         condition: "edit",
                         callback: showNewMeetingMenu
@@ -143,7 +139,7 @@ TrelloPowerUp.initialize({
                                 content: {
                                     type: 'iframe',
                                     url: t.signUrl(TrelloPowerUp.util.relativeUrl('./views/summary-section.html')),
-                                    height: 80, // Max height is 1500.
+                                    height: 80,
                                 },
                                 action: {
                                     text: 'Remove Summary',
