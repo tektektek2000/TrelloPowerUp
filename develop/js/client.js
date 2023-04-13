@@ -73,24 +73,29 @@ TrelloPowerUp.initialize({
                                     durationHours--;
                                     durationMinutes += 60;
                                 }
-                                return getListTopicCardsDuration(t,card.idList)
-                                .then(topicDuration => {
-                                    console.log(topicDuration);
-                                    return [
-                                        {
-                                            text: `🕒 ${ToTwoDigit(cardRole.startHour)}:${ToTwoDigit(cardRole.startMinutes)}-${ToTwoDigit(cardRole.endHour)}:${ToTwoDigit(cardRole.endMinutes)}`,
-                                            color: "blue"
-                                        },
-                                        {
-                                            text: `Length: ${durationHours} h ${durationMinutes} m`,
-                                            color: "light-gray"
-                                        },
-                                        {
-                                            text: `Scheduled: ${Math.floor(topicDuration/60)} h ${topicDuration%60} m`,
-                                            color: (durationHours * 60 + durationMinutes) - topicDuration < 0 ? 'red' : 'yellow' 
+                                return [
+                                    {
+                                        text: `🕒 ${ToTwoDigit(cardRole.startHour)}:${ToTwoDigit(cardRole.startMinutes)}-${ToTwoDigit(cardRole.endHour)}:${ToTwoDigit(cardRole.endMinutes)}`,
+                                        color: "blue"
+                                    },
+                                    {
+                                        text: `Length: ${durationHours} h ${durationMinutes} m`,
+                                        color: "light-gray"
+                                    },
+                                    {
+                                        dynamic: () =>{
+                                            return getListTopicCardsDuration(t,card.idList)
+                                            .then(topicDuration => {
+                                                return {
+                                                    text: `Scheduled: ${Math.floor(topicDuration/60)} h ${topicDuration%60} m`,
+                                                    color: (durationHours * 60 + durationMinutes) - topicDuration < 0 ? 'red' : 'yellow',
+                                                    refresh: 10, // in seconds
+                                                }
+                                            })
                                         }
+                                    }
                                     ];
-                                })
+                                }
                             }
                             else if(cardRole.role === "Topic"){
                                 return [
@@ -100,7 +105,6 @@ TrelloPowerUp.initialize({
                                     }
                                 ];
                             }
-                        }
                         return [];
                     });
             });
