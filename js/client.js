@@ -35,8 +35,7 @@ function getListTopicCardsDuration(t, listID){
         .getToken()
         .then(token => {
             return api.getCardsFromList(listID,'2905a45608f989a24bf26e3d92edcf80',token)
-            .then(cards => {  
-                var sum = 0;            
+            .then(cards => {          
                 var promises = []
                 for(const card of cards){
                     promises += t.get(card.id, 'shared', 'meetingCard')
@@ -46,11 +45,12 @@ function getListTopicCardsDuration(t, listID){
                         }
                         return 0;
                     })
-                    .then(val => {
-                        sum += val;
-                    })
                 }
-                return Promise.all(promises).then(() => {
+                return Promise.all(promises).then(values => {
+                    var sum = 0;
+                    for(const val of values){
+                        sum += val;
+                    }
                     return sum;
                 });
             })
