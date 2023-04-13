@@ -31,17 +31,24 @@ function makeTopicCard(t){
 }
 
 function getListTopicCardsDuration(t, listID){
-    var ret = t.getRestApi()
+    return t.getRestApi()
         .getToken()
         .then(token => {
             return api.getCardsFromList(listID,'2905a45608f989a24bf26e3d92edcf80',token)
             .then(cards => {
-                console.log(cards);
-                return cards;
+                sum = 0;
+                cards.forEach(card => {
+                    sum += t.get(id, 'shared', 'meetingCard')
+                    .then(cardRole => {
+                        if (cardRole && cardRole.role === "Topic") {
+                            return cardRole.hours * 60 + cardRole.minutes;
+                        }
+                        return 0;
+                    })
+                });
+                return sum;
             })
         });
-    console.log(ret);
-    return ret;
 }
 
 TrelloPowerUp.initialize({
