@@ -89,13 +89,12 @@ TrelloPowerUp.initialize({
                                                 return {
                                                     text: `Scheduled: ${Math.floor(topicDuration/60)} h ${topicDuration%60} m`,
                                                     color: (durationHours * 60 + durationMinutes) - topicDuration < 0 ? 'red' : 'yellow',
-                                                    refresh: 10, // in seconds
+                                                    refresh: 5
                                                 }
                                             })
                                         }
                                     }
                                     ];
-                                }
                             }
                             else if(cardRole.role === "Topic"){
                                 return [
@@ -105,6 +104,7 @@ TrelloPowerUp.initialize({
                                     }
                                 ];
                             }
+                        }
                         return [];
                     });
             });
