@@ -26,7 +26,10 @@ function getCardsFromList(listID, apiKey, token){
         );
         return response.text();
     })
-    .then(text =>{return text;})
+    .then(text =>{
+        console.log(text);
+        return text;
+    })
 }
 
 export {addList,addCard,getCardsFromList}
