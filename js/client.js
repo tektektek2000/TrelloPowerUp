@@ -74,9 +74,8 @@ TrelloPowerUp.initialize({
                                     durationMinutes += 60;
                                 }
                                 return getListTopicCardsDuration(t,card.idList)
-                                .then(cards => {
-                                    console.log(cards);
-                                    var diff = (durationHours * 60 + durationMinutes);
+                                .then(topicDuration => {
+                                    console.log(topicDuration);
                                     return [
                                         {
                                             text: `🕒 ${ToTwoDigit(cardRole.startHour)}:${ToTwoDigit(cardRole.startMinutes)}-${ToTwoDigit(cardRole.endHour)}:${ToTwoDigit(cardRole.endMinutes)}`,
@@ -85,6 +84,10 @@ TrelloPowerUp.initialize({
                                         {
                                             text: `Length: ${durationHours} h ${durationMinutes} m`,
                                             color: "light-gray"
+                                        },
+                                        {
+                                            text: `Scheduled: ${Number(topicDuration/60)} h ${topicDuration%60} m`,
+                                            color: (durationHours * 60 + durationMinutes) - topicDuration < 0 ? 'red' : 'yellow' 
                                         }
                                     ];
                                 })
