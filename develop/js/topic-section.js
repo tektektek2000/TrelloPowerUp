@@ -19,7 +19,7 @@ var t = window.TrelloPowerUp.iframe({
 $(document).ready(function(){
     t.get('card', 'shared', 'meetingCard')
     .then(cardRole => {
-        if (cardRole && cardRole.role === "Summary") {
+        if (cardRole && cardRole.role === "Topic") {
             $('#topichours')[0].value=`${cardRole.hours}`;
             $('#topicminutes')[0].value=`${cardRole.minutes}`;
             $('#topichours')[0].addEventListener("input", inputChanged);
