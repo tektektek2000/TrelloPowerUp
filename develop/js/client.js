@@ -36,7 +36,7 @@ function getListTopicCardsDuration(t, listID){
         .then(token => {
             return api.getCardsFromList(listID,'2905a45608f989a24bf26e3d92edcf80',token)
             .then(cards => {
-                sum = 0;
+                var sum = 0;
                 cards.forEach(card => {
                     sum += t.get(id, 'shared', 'meetingCard')
                     .then(cardRole => {
