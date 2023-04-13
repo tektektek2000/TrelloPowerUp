@@ -38,13 +38,13 @@ function getListTopicCardsDuration(t, listID){
             .then(cards => {          
                 var promises = []
                 for(const card of cards){
-                    promises += t.get(card.id, 'shared', 'meetingCard')
+                    promises.push(t.get(card.id, 'shared', 'meetingCard')
                     .then(cardRole => {
                         if (cardRole && cardRole.role === "Topic") {
                             return cardRole.hours * 60 + cardRole.minutes;
                         }
                         return 0;
-                    })
+                    }));
                 }
                 return Promise.all(promises).then(values => {
                     var sum = 0;
