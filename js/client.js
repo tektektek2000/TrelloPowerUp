@@ -37,6 +37,7 @@ function getListTopicCardsDuration(t, listID){
             api.getCardsFromList(listID,'2905a45608f989a24bf26e3d92edcf80',token)
             .then(cards => {
                 console.log(cards);
+                return cards;
             })
         })
 }
@@ -57,17 +58,20 @@ TrelloPowerUp.initialize({
                                     durationHours--;
                                     durationMinutes += 60;
                                 }
-                                var diff = (durationHours * 60 + durationMinutes) - getListTopicCardsDuration(t,card.idList);
-                                return [
-                                    {
-                                        text: `🕒 ${ToTwoDigit(cardRole.startHour)}:${ToTwoDigit(cardRole.startMinutes)}-${ToTwoDigit(cardRole.endHour)}:${ToTwoDigit(cardRole.endMinutes)}`,
-                                        color: "blue"
-                                    },
-                                    {
-                                        text: `Length: ${durationHours} h ${durationMinutes} m`,
-                                        color: "light-gray"
-                                    }
-                                ];
+                                getListTopicCardsDuration(t,card.idList)
+                                .then(cards => {
+                                    var diff = (durationHours * 60 + durationMinutes) - ;
+                                    return [
+                                        {
+                                            text: `🕒 ${ToTwoDigit(cardRole.startHour)}:${ToTwoDigit(cardRole.startMinutes)}-${ToTwoDigit(cardRole.endHour)}:${ToTwoDigit(cardRole.endMinutes)}`,
+                                            color: "blue"
+                                        },
+                                        {
+                                            text: `Length: ${durationHours} h ${durationMinutes} m`,
+                                            color: "light-gray"
+                                        }
+                                    ];
+                                })
                             }
                             else if(cardRole.role === "Topic"){
                                 return [
