@@ -27,7 +27,9 @@ function getCardsFromList(listID, apiKey, token){
         return response.text();
     })
     .then(text => {
-        return JSON.parse(text);
+        var cards = JSON.parse(text);
+        console.log(cards);
+        return cards;
     });
 }
 
