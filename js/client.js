@@ -34,11 +34,7 @@ function getListTopicCardsDuration(t, listID){
     return t.getRestApi()
         .getToken()
         .then(token => {
-            api.getCardsFromList(listID,'2905a45608f989a24bf26e3d92edcf80',token)
-            .then(cards => {
-                console.log(cards);
-                return cards;
-            })
+            return api.getCardsFromList(listID,'2905a45608f989a24bf26e3d92edcf80',token)
         })
 }
 
@@ -60,6 +56,7 @@ TrelloPowerUp.initialize({
                                 }
                                 return getListTopicCardsDuration(t,card.idList)
                                 .then(cards => {
+                                    console.log(cards);
                                     var diff = (durationHours * 60 + durationMinutes);
                                     return [
                                         {
