@@ -86,12 +86,16 @@ TrelloPowerUp.initialize({
                                             .then(topicDuration => {
                                                 if(topicDuration === 0)
                                                 {
-                                                    return {refresh: 5}
+                                                    return {
+                                                        text: `No Scheduled`,
+                                                        color: 'light-gray',
+                                                        refresh: 10
+                                                    }
                                                 }
                                                 return {
                                                     text: `Scheduled: ${Math.floor(topicDuration/60)} h ${topicDuration%60} m`,
                                                     color: (durationHours * 60 + durationMinutes) - topicDuration < 0 ? 'red' : 'green',
-                                                    refresh: 5
+                                                    refresh: 10
                                                 }
                                             })
                                         }
