@@ -84,6 +84,10 @@ TrelloPowerUp.initialize({
                                         dynamic: () =>{
                                             return getListTopicCardsDuration(t,card.idList)
                                             .then(topicDuration => {
+                                                if(topicDuration === 0)
+                                                {
+                                                    return {}
+                                                }
                                                 return {
                                                     text: `Scheduled: ${Math.floor(topicDuration/60)} h ${topicDuration%60} m`,
                                                     color: (durationHours * 60 + durationMinutes) - topicDuration < 0 ? 'red' : 'green',
