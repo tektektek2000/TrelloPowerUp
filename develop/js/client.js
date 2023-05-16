@@ -86,7 +86,7 @@ TrelloPowerUp.initialize({
                                             .then(topicDuration => {
                                                 if(topicDuration === 0)
                                                 {
-                                                    return {}
+                                                    return {refresh: 5}
                                                 }
                                                 return {
                                                     text: `Scheduled: ${Math.floor(topicDuration/60)} h ${topicDuration%60} m`,
